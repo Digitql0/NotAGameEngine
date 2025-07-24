@@ -128,7 +128,7 @@ void MakeWindow(int width, int height, const char* title) {
 	std::cout << "1" << std::endl;
 	frame = win;
 
-	myShader.MakeShader("../external/MiniGL/shaders/vertex_shader.glsl", "../external/MiniGL/shaders/fragment_shader.glsl");
+	myShader.MakeShader("../shaders/vertex_shader.glsl", "../external/fragment_shader.glsl");
 
     std::cout << "1" << std::endl;
     initializeRectangleVAO();
