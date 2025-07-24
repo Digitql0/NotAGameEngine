@@ -1,4 +1,0 @@
-#ifndef TASKMANAGER_HPP
-#define TASKMANAGER_HPP
-
-#endif // TASKMANAGER_HPP
