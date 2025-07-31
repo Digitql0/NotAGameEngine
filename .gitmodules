@@ -4,3 +4,6 @@
 [submodule "external/Thread-Scheduler"]
 	path = external/Thread-Scheduler
 	url = https://github.com/Digitql0/Thread-Scheduler
+[submodule "external/MostlyForces"]
+	path = external/MostlyForces
+	url = https://github.com/Digitql0/MostlyForces
