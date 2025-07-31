@@ -1,3 +1,6 @@
 [submodule "external/MiniGL"]
 	path = external/MiniGL
 	url = https://github.com/Digitql0/MiniGL
+[submodule "external/Thread-Scheduler"]
+	path = external/Thread-Scheduler
+	url = https://github.com/Digitql0/Thread-Scheduler
