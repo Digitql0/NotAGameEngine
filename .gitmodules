@@ -7,3 +7,6 @@
 [submodule "external/MostlyForces"]
 	path = external/MostlyForces
 	url = https://github.com/Digitql0/MostlyForces
+[submodule "external/BitsAndPieces"]
+	path = external/BitsAndPieces
+	url = https://github.com/Digitql0/BitsAndPieces
