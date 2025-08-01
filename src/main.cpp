@@ -1,18 +1,28 @@
-#include <iostream>
 #include "MiniGL.hpp"
+#include "MostlyForces.hpp"
+#include <iostream>
 
 int main() {
 
-	MakeWindow(500, 500, "LOL");
+	std::cout << "Making Window..." << std::endl;
+	MakeWindow(800, 600, "Lol how did i do this");
 
-	while (!WindowShouldClose()) {
+	while(!WindowShouldClose()) {
+		//std::cout << "Beginning Drawing..." << std::endl;
 		BeginDrawing();
-		drawRectangle(200, 200, 200, 200, 255, 0, 255/2);
+
+		//std::cout << "Clearing Background..." << std::endl;
+		ClearBackground(255, 255, 255);
+
+		//std::cout << "Drawing Rectangle..." << std::endl;
+		drawRectangle(10, 10, 100, 100, 255, 0, 0);
+
+		//std::cout << "Ending Drawing..." << std::endl;
 		EndDrawing();
 	}
 
+	std::cout << "Closing Window..." << std::endl;
 	CloseWindow();
 
-	std::cout << "Hello World" << std::endl;
 	return 0;
 }
