@@ -4,6 +4,10 @@ project(YourProjectName LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+cmake_policy(SET CMP0072 NEW)
+set(OpenGL_GL_PREFERENCE "GLVND")
+
+
 # Add your own include folder
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
@@ -24,7 +28,8 @@ file(GLOB_RECURSE SRC_FILES
 )
 
 # Now add your executable target
-add_executable(${PROJECT_NAME} ${SRC_FILES})
+add_executable(main ${SRC_FILES})
 
 # Now link MiniGL and other libraries to your executable target
-target_link_libraries(${PROJECT_NAME} PRIVATE MiniGL)
+target_link_libraries(main PRIVATE MiniGL)
+target_link_libraries(main PRIVATE MostlyForces)
