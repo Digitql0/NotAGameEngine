@@ -1,25 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
-project(YourProjectName LANGUAGES CXX)
+project(NotAGameEngine LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD 17)
 
-cmake_policy(SET CMP0072 NEW)
-set(OpenGL_GL_PREFERENCE "GLVND")
-
-
-# Add your own include folder
-include_directories(${PROJECT_SOURCE_DIR}/include)
-
-# Get all first-level directories inside external/
-file(GLOB EXTERNAL_LIB_DIRS LIST_DIRECTORIES true "${PROJECT_SOURCE_DIR}/external/*")
-
-foreach(dir ${EXTERNAL_LIB_DIRS})
-    if(IS_DIRECTORY ${dir})
-        message(STATUS "Adding external library subdirectory: ${dir}")
-        add_subdirectory(${dir})
-    endif()
-endforeach()
+add_subdirectory(external/OTHERLIB)
+add_subdirectory(external/OTHERLIB)
 
 # Collect your own source files
 file(GLOB_RECURSE SRC_FILES
@@ -28,8 +14,7 @@ file(GLOB_RECURSE SRC_FILES
 )
 
 # Now add your executable target
-add_executable(main ${SRC_FILES})
-
-# Now link MiniGL and other libraries to your executable target
-target_link_libraries(main PRIVATE MiniGL)
-target_link_libraries(main PRIVATE MostlyForces)
+add_executable(NotAGameEngine ${SRC_FILES})
+include_directories(${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(NotAGameEngine PRIVATE OTHERLIB)
+target_link_libraries(NotAGameEngine PRIVATE OTHERLIB)
