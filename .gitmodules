@@ -10,3 +10,6 @@
 [submodule "external/BitsAndPieces"]
 	path = external/BitsAndPieces
 	url = https://github.com/Digitql0/BitsAndPieces
+[submodule "external/imgui"]
+	path = external/imgui
+	url = https://github.com/ocornut/imgui.git

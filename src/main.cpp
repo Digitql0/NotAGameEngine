@@ -1,43 +1,44 @@
-#include "MiniGL.hpp"
-#include "MostlyForces.hpp"
-#include <iostream>
+#include "backends/imgui_impl_glfw.h"
+#include "bap.hpp"
+#include "imgui.h"
+#include "imgui_impl_opengl3.h"
 
 int main() {
+  MGL_makeWindow(800, 600, "My Window");
 
-	std::cout << "Making Window..." << std::endl;
-	MakeWindow(800, 600, "Lol how did i do this");
-	std::cout << "This is not real" << std::endl;
+  GLFWwindow* window = mgl_frame;
 
-	Rectangle a = {250, 0, 100, 100};
-	Rectangle b = {500, 0, 100, 100};
-	Rectangle c = {0, 0, 100, 100};
+  IMGUI_CHECKVERSION();
+  ImGui::CreateContext();
+  ImGuiIO& io = ImGui::GetIO();
+  (void)io;
+  ImGui::StyleColorsDark();
 
-	Vec2 a_velocity = {1, 0};
+  ImGui_ImplGlfw_InitForOpenGL(window, true);
+  ImGui_ImplOpenGL3_Init("#version 330");
 
-	while(!WindowShouldClose()) {
-		//std::cout << "Beginning Drawing..." << std::endl;
-		BeginDrawing();
+  while (!MGL_windowShouldClose()) {
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
 
-		//std::cout << "Clearing Background..." << std::endl;
-		ClearBackground(255, 255, 255);
+    ImGui::Begin("Hello ImGui");
+    ImGui::Text("Running inside my own GLFW window!");
+    ImGui::End();
 
-		//std::cout << "Drawing Rectangle..." << std::endl;
-		drawRectangle(a.x, a.y, a.w, a.h, 255, 0, 0);
-		drawRectangle(b.x, b.y, b.w, b.h, 0, 255, 255);
-		drawRectangle(c.x, c.y, c.w, c.h, 0, 0, 255);
-		a.x += a_velocity.x;
-		a.y += a_velocity.y;
+    MGL_beginDrawing();
+    MGL_clearBackground(20, 20, 20);
 
-		if (CheckCollisionRectangles(a, b) || CheckCollisionRectangles(a, c)) {
-			a_velocity = getScaledVec(a_velocity, -1);
-		}
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-		//std::cout << "Ending Drawing..." << std::endl;
-		EndDrawing();
-	}
+    MGL_endDrawing();
+  }
 
-	std::cout << "Closing Window..." << std::endl;
-	CloseWindow();
+  ImGui_ImplOpenGL3_Shutdown();
+  ImGui_ImplGlfw_Shutdown();
+  ImGui::DestroyContext();
 
-	return 0;
+  MGL_closeWindow();
+  return 0;
 }
